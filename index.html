@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LendBox — Жалға беру платформасы</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="container header-inner">
+    <div class="logo">LendBox</div>
+    <nav>
+      <ul>
+        <li><a href="#">Басты бет</a></li>
+        <li><a href="#categories">Категориялар</a></li>
+        <li><a href="#about">Біз туралы</a></li>
+        <li><a href="#" id="loginBtn">Кіру</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <div class="search">
+    <input type="text" placeholder="Заттарды іздеңіз...">
+    <button>Іздеу</button>
+  </div>
+
+  <section id="categories">
+    <h2>Категориялар</h2>
+    <div class="categories">
+      <div class="category"><img src="images/placeholder1.jpg"><div>Құрылыс құралдары</div></div>
+      <div class="category"><img src="images/placeholder3.jpg"><div>Туристік жабдықтар</div></div>
+      <div class="category"><img src="images/placeholder4.jpg"><div>Спорт инвентары</div></div>
+      <div class="category"><img src="images/placeholder5.jpg"><div>Ас үй және тұрмыстық техника</div></div>
+      <div class="category"><img src="images/placeholder6.jpg"><div>Мерекелік киімдер мен костюмдер</div></div>
+      <div class="category"><img src="images/placeholder7.jpg"><div>Үй шаруашылығына арналған құралдар</div></div>
+      <div class="category"><img src="images/placeholder8.jpg"><div>Мебель</div></div>
+      <div class="category"><img src="images/placeholder9.jpg"><div>Электроника</div></div>
+      <div class="category"><img src="images/placeholder10.jpg"><div>Балалар ойыншықтары</div></div>
+      <div class="category"><img src="images/placeholder11.jpg"><div>Кітаптар</div></div>
+      <div class="category"><img src="images/placeholder12.jpg"><div>Музыкалық аспаптар</div></div>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <h2>Біз туралы</h2>
+    <p>
+      LendBox — бұл заттарды сатып алмай-ақ, қажет кезде арзан жалға алу мүмкіндігі.
+      Пайдаланылмай тұрған заттарды табыс көзіне айналдырыңыз.
+    </p>
+  </section>
+
+  <section id="products">
+    <h2>Жалға берілетін заттар</h2>
+    <div class="products">
+      <div class="product">
+        <img src="images/product1.jpg">
+        <h3>Шаңсорғыш</h3>
+        <p>Сапасы жоғары, жақсы күйде</p>
+        <span>₸3500/күн</span>
+        <button>Жалға алу</button>
+      </div>
+
+      <div class="product">
+        <img src="images/product2.jpg">
+        <h3>Балға</h3>
+        <p>Сапалы, ыңғайлы</p>
+        <span>₸800/күн</span>
+        <button>Жалға алу</button>
+      </div>
+
+      <div class="product">
+        <img src="images/product3.jpg">
+        <h3>Фотоаппарат</h3>
+        <p>Intel i5, 8GB RAM</p>
+        <span>₸3000/күн</span>
+        <button>Жалға алу</button>
+      </div>
+
+      <div class="product">
+        <img src="images/product4.jpg">
+        <h3>Костюм</h3>
+        <p>Размер M, қара</p>
+        <span>₸1200/күн</span>
+        <button>Жалға алу</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Кіру / Тіркелу</h2>
+
+    <form id="loginForm">
+      <label>Email:</label>
+      <input type="email" required>
+      <label>Құпия сөз:</label>
+      <input type="password" required>
+      <button type="submit">Кіру</button>
+      <p>Жаңа пайдаланушысыңыз ба? <a href="#" id="registerLink">Тіркелу</a></p>
+    </form>
+
+    <form id="registerForm" style="display:none;">
+      <label>Email:</label>
+      <input type="email" required>
+      <label>Құпия сөз:</label>
+      <input type="password" required>
+      <label>Атыңыз:</label>
+      <input type="text" required>
+      <button type="submit">Тіркелу</button>
+      <p>Келесіз бе? <a href="#" id="loginLink">Кіру</a></p>
+    </form>
+  </div>
+</div>
+
+<footer>
+  &copy; 2025 LendBox — Барлық құқық қорғалған
+</footer>
+
+<script>
+const loginBtn = document.getElementById('loginBtn');
+const modal = document.getElementById('loginModal');
+const closeBtn = document.querySelector('.close');
+const registerLink = document.getElementById('registerLink');
+const loginLink = document.getElementById('loginLink');
+const loginForm = document.getElementById('loginForm');
+const registerForm = document.getElementById('registerForm');
+
+loginBtn.onclick = () => modal.style.display = 'block';
+closeBtn.onclick = () => modal.style.display = 'none';
+window.onclick = e => { if (e.target === modal) modal.style.display = 'none'; };
+
+registerLink.onclick = e => {
+  e.preventDefault();
+  loginForm.style.display = 'none';
+  registerForm.style.display = 'block';
+};
+
+loginLink.onclick = e => {
+  e.preventDefault();
+  registerForm.style.display = 'none';
+  loginForm.style.display = 'block';
+};
+
+loginForm.onsubmit = e => {
+  e.preventDefault();
+  alert('Кіру сәтті!');
+  modal.style.display = 'none';
+  loginBtn.textContent = 'Профиль';
+};
+
+registerForm.onsubmit = e => {
+  e.preventDefault();
+  alert('Тіркелу сәтті!');
+  modal.style.display = 'none';
+  loginBtn.textContent = 'Профиль';
+};
+</script>
+
+</body>
+</html>
